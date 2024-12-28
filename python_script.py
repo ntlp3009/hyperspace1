@@ -71,12 +71,31 @@ def play_guessing_game():
 			print("Doan lai di ban oiiii")
 
 def fib(number):
-	if number == 1:
-		return 1
-	sum = 0
-	for i in range (number):
-		print("i = "+str(i))
-		sum = fib(number-1) + fib(number-2)
-		print("sum = "+str(sum))
+	try :
+		number = int(number)
+		if number == 1:
+			return 1
+		if number == 2:
+			return 1
+		else:
+			return fib(number-1) + fib(number-2)
+	except:
+		return ("Ban can input mot so nguyen")
 
-print(fib(5))
+
+flatten_result = []
+def flatten (arr):
+	if isinstance(arr, (dict,list,tuple)) == False:
+		flatten_result.append(arr)
+		print("flatten_result luc nay la: " + str(flatten_result)+"\n")
+		return flatten_result
+	
+	for a in arr:
+		print("Type cua " + str(a) + " la: " + str(type(a)))
+		new_value = flatten(a)
+	return flatten_result
+
+# input_test = [[[[1], [[[2]]], [[[[5,[[[3]]]]]]]]]]
+# input_test = [1, 2, [3, [4, 5]]]
+input_test = [1, [2, [3, 4], [[5.4]]]]
+print(flatten(input_test))
